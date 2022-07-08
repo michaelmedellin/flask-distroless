@@ -1,9 +1,9 @@
 FROM python:3.5-slim AS builder
 WORKDIR /app
+COPY requirements.txt ./
 RUN python3 -m venv venv 
 ENV PATH=/app/venv/bin/:$PATH
 RUN pip install -r requirements.txt
-
 COPY . ./
 
 FROM gcr.io/distroless/python3
